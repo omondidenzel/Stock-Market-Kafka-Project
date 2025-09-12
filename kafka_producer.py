@@ -5,6 +5,14 @@ from json import dumps
 import logging, sys
 import json
 
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+s3_bucket = os.getenv("S3_BUCKET")
+host = os.getenv("HOST")
+
 logging.basicConfig(
     stream=sys.stdout,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
@@ -13,7 +21,7 @@ logging.basicConfig(
 log = logging.getLogger(__name__)
 
 param = {
-    'bootstrap_servers': ['localhost:9092'],
+    'bootstrap_servers': [f'{host}:9092'],
     'value_serializer': lambda x: dumps(x).encode('utf-8'),  
 }
 
