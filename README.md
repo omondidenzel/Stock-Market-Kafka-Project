@@ -1,4 +1,4 @@
-# 📈 Stock Market Kafka Real-Time (Simulated) Data Engineering Project
+# 📈 Stock Market Kafka Real-Time (API Simulated) Data Engineering Project
 
 ## 🚀 Overview  
 This project demonstrates an **end-to-end real-time data engineering pipeline** for streaming stock market data using **Apache Kafka**.  

@@ -2,3 +2,4 @@
 *.pkg
 *.tgz
 kafka_2.13-4.1.0
+.env
