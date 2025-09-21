@@ -31,6 +31,7 @@ with DAG(
     schedule=timedelta(days=1)
     ) as dag:
 
+    log.info("DAG started")
     t1 = EmptyOperator(
         task_id='start'
     )
@@ -54,6 +55,12 @@ with DAG(
         task_id='end'
     )
    
+    log.info("DAG ended")
+
+    log.info("Setting up task dependencies")
     t1 >> run_server >> kafka_consumer >> kafka_producer 
     kafka_producer >> t2
+
+    log.info("Task dependencies set up successfully")
+    log.info("DAG setup complete")
 
