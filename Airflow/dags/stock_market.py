@@ -1,4 +1,3 @@
-import textwrap
 from datetime import datetime, timedelta
 
 # The DAG object; we'll need this to instantiate a DAG
@@ -49,3 +48,4 @@ with DAG(
    
     t1 >> run_server >> kafka_consumer >> kafka_producer 
     kafka_producer >> t2
+
