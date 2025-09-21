@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+import logging
 
 # The DAG object; we'll need this to instantiate a DAG
 from airflow import DAG
@@ -6,6 +7,13 @@ from airflow import DAG
 from airflow.operators.empty import EmptyOperator
 from airflow.operators.python import PythonOperator
 from airflow.operators.bash import BashOperator
+
+log = logging.getLogger(
+    "airflow.task",
+    level=logging.INFO,
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
 
 
 default_args = {
