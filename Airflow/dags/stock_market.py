@@ -58,8 +58,12 @@ with DAG(
     log.info("DAG ended")
 
     log.info("Setting up task dependencies")
-    t1 >> run_server >> kafka_consumer >> kafka_producer 
-    kafka_producer >> t2
+
+    try:
+        t1 >> run_server >> kafka_consumer >> kafka_producer 
+        kafka_producer >> t2
+    except Exception as e:
+        log.error(f"Error setting up task dependencies: {e}")    
 
     log.info("Task dependencies set up successfully")
     log.info("DAG setup complete")
